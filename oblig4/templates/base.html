@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title> {{the_title}} </title>
+        <link rel="stylesheet" type="text/css" href="static/main.css"> 
+
+    </head>
+
+    <body>
+      <nav class="navbar">
+        <a class="link-text" href="{{url_for('index')}}">Hjem</a>
+        <a class="link-text" href="{{url_for('myself_info')}}">Om meg</a>
+        <a class="link-text" href="{{url_for('flask_info')}}">Flask</a>
+      </nav>
+
+      <main>
+        {% block content%}
+
+        {% endblock %}
+      </main>
+
+      <footer class="footer">
+        <a class="link-text" href="{{url_for('index')}}">Hjem</a>
+      </footer>
+
+    </body>
+</html>
