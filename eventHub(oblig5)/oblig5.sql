@@ -33,11 +33,18 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Arrangement` (
   `idArrangement` INT NOT NULL AUTO_INCREMENT,
-  `arrangementAnsvarlig` VARCHAR(45) NOT NULL,
+  `arrangementAnsvarlig` INT NOT NULL,
   `tittel` VARCHAR(45) NULL,
   `tidspunkt` DATETIME NULL,
   `sted` VARCHAR(45) NULL,
-  PRIMARY KEY (`idArrangement`))
+  `beskrivelse` VARCHAR(500) NULL,
+  PRIMARY KEY (`idArrangement`),
+  INDEX `arr_ansvarlig_idBrukerFK_idx` (`arrangementAnsvarlig` ASC) VISIBLE,
+  CONSTRAINT `arr_ansvarlig_idBrukerFK`
+    FOREIGN KEY (`arrangementAnsvarlig`)
+    REFERENCES `mydb`.`Bruker` (`idBruker`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 

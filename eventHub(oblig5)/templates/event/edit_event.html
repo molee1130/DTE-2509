@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Edit your event: {{event.title}}</h2>
+
+    {# The form tag itself doesn't need Bootstrap classes usually #}
+    <form method="POST" action="{{ url_for('event.edit_event', event_id=event.id) }}">
+
+        <div class="mb-3">
+            <label for="eventTitle" class="form-label">Event Title</label>
+            <input type="text" class="form-control" id="eventTitle" name="event_title" value="{{event.title}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="eventPlace" class="form-label">Place</label>
+            <input type="text" class="form-control" id="eventPlace" name="event_place" value="{{event.place}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="eventTime" class="form-label">Time</label>
+            <input type="datetime-local" class="form-control" id="eventTime" name="event_time" value="{{event.time}}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="eventDescription" class="form-lable">Description</label>
+            <textarea class="form-control" id="eventDescription" name="event_description"
+                maxlength="450">{{ event.description or " " }}</textarea>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Update Event</button>
+    </form>
+</div>
+
+{% endblock %}
